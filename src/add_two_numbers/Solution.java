@@ -10,6 +10,42 @@ public class Solution {
         return reverseList(transformList(totalSum));
     }
 
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2){
+        int carry = 0;//jinwei
+        ListNode head = new ListNode(0);
+        ListNode point  = head;
+        while(l1!=null&&l2!=null){
+            int sum = l1.val+l2.val+carry;
+            carry = sum / 10;
+            point.next = new ListNode(sum % 10);
+            point = point.next;
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+
+        while(l1!=null){
+            int sum = l1.val+carry;
+            carry = sum / 10;
+            point.next = new ListNode(sum % 10);
+            point = point.next;
+            l1 = l1.next;
+        }
+
+        while(l2!=null){
+            int sum = l2.val+carry;
+            carry = sum / 10;
+            point.next = new ListNode(sum % 10);
+            point = point.next;
+            l2 = l2.next;
+        }
+
+        if(carry != 0){
+            point.next = new ListNode(carry);
+        }
+        return head.next;
+    }
+
+
     private static long transformDigit(ListNode listNode) {
         long sum = 0;
         while (listNode != null) {
@@ -67,12 +103,14 @@ public class Solution {
 
         ListNode b = new ListNode(3);
         ListNode tempB = b;
-       // b.next = new ListNode(6);
-        //b=b.next;
-        //b.next = new ListNode(4);
+        b.next = new ListNode(6);
+        b=b.next;
+        b.next = new ListNode(4);
 
-         ListNode x = reverseList(transformList(1999999999));
-        long num = transformDigit(x);
+        // ListNode x = reverseList(transformList(1999999999));
+        //long num = transformDigit(x);
+        System.out.println(transformDigit(solution.addTwoNumbers2(tempA,tempB)));
+
 
     }
 }
