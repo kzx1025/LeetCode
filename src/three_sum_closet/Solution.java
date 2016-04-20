@@ -9,36 +9,34 @@ import java.util.List;
  */
 public class Solution {
     //TODO unfinished by kzx
-    public int threeSumClosest(int[] nums, int target) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+
+    public static void main(String args[]) {
+        int[] nums = {0,2,1,-3};
+        int result = threeSumClosest(nums,1);
+        System.out.println(result);
+
+    }
+
+    public static int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
+        int minGap = Integer.MAX_VALUE;
+        int needTarget = 0;
         for (int m = 0; m < nums.length; m++) {
-            if (nums[m] > 0) {
-                break;
-            }
-            if (m != 0 && nums[m] == nums[m - 1]) {
-                continue; // to skip duplicate numbers; e.g [0,0,0,0]
-            }
+
             int left = m + 1;
             int right = nums.length - 1;
             //动态规划！！
             while (left < right) {
                 int sum = nums[m] + nums[left] + nums[right];
-                if (sum == 0) {
-                    List<Integer> tempList = new ArrayList<Integer>();
-                    tempList.add(nums[m]);
-                    tempList.add(nums[left]);
-                    tempList.add(nums[right]);
-                    result.add(tempList);
-                    left++;
-                    right--;
-                    while (left < right && nums[left] == nums[left - 1]) { // to skip duplicates
-                        left++;
-                    }
-                    while (left < right && nums[right] == nums[right + 1]) { // to skip duplicates
-                        right--;
-                    }
-                } else if (sum < 0) {
+                int gap = Math.abs(sum-target);
+                if(gap<minGap){
+                    minGap = gap;
+                    needTarget = sum;
+                }
+
+                if (sum-target == 0) {
+                    return target;
+                } else if (sum-target < 0) {
                     left++;
                 } else {
                     right--;
@@ -47,7 +45,7 @@ public class Solution {
             }
         }
 
-        return 0;
+        return needTarget;
 
     }
 }
