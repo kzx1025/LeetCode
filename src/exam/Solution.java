@@ -1,4 +1,4 @@
-package wangyi;
+package exam;
 
 import java.util.*;
 
