@@ -10,7 +10,7 @@ public class AnHei {
         if(length == 3){
             return sameValue+noSameValue;
         }else{
-            return getNumber(sameValue+noSameValue,sameValue*3+2*noSameValue,length-1);
+            return getNumber(sameValue+noSameValue,2*sameValue+noSameValue,length-1);
         }
 
     }
