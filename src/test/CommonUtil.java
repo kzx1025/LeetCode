@@ -5,4 +5,14 @@ package test;
  */
 public class CommonUtil {
 
+    public static void method(){
+
+    }
+
+    public static void main(String args[]){
+        String a = "abc";
+        a =a.replace("a","A");
+        System.out.println(a);
+    }
+
 }
