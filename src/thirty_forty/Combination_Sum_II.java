@@ -1,20 +1,17 @@
-package thirty_forty.Combination_Sum;
+package thirty_forty;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
-/**List<List<Integer>>
- * Created by iceke on 16/12/13.
- *
- * 回溯法
+/**
+ * Created by iceke on 16/12/15.
+ * 相当于组合
  */
-public class Solution {
-
+public class Combination_Sum_II {
     public static void main(String args[]){
 
-        List<List<Integer>> results = combinationSum(new int[]{1,2,3},4);
+        List<List<Integer>> results = combinationSum(new int[]{10, 1, 2, 7, 6, 1, 5},8);
         System.out.println(results);
 
 
@@ -31,7 +28,7 @@ public class Solution {
 
 
     public static void back_track(List<List<Integer>> results,List<Integer> current,int[] candidates,int target,int floor){
-       // System.out.println(current);
+        // System.out.println(current);
         if(target == 0){
             results.add(new ArrayList<Integer>(current));
         }else if(target<0){
@@ -40,12 +37,12 @@ public class Solution {
 
             for (int i = floor; i < candidates.length; i++) {
                 int value = candidates[i];
+                if(i > floor&&value == candidates[i-1]) continue;//跳过同层楼相同的数字
                 current.add(value);
-                back_track(results, current, candidates, target - value, i);
+                back_track(results, current, candidates, target - value, i+1);
                 //remove the last one
                 current.remove(current.size() - 1);
             }
         }
     }
-
 }
