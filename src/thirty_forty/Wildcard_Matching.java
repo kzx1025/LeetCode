@@ -15,7 +15,7 @@ public class Wildcard_Matching {
         int sLength = s.length();
         int pLength = p.length();
         int j =0;
-        int starIndex = -1;
+        int starIndex = -1; //pattern
         int starPointer = 0;
         for(int i =0;i<sLength;){
             if(j<pLength&&(p.charAt(j)==s.charAt(i)||p.charAt(j)=='?')){
