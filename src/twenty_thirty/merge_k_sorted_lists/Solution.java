@@ -42,6 +42,7 @@ public class Solution {
 
     }
 
+    //归并排序
     public static ListNode sort(ListNode[]lists, int low, int high){
         int mid = (low+high)/2;
         if(low < high){

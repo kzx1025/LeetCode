@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Permutations {
     public static void main(String args[]){
-        System.out.println(permute(new int[]{}));
+        System.out.println(permute(new int[]{1,2,3}));
 
     }
 
